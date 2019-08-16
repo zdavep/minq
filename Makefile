@@ -18,4 +18,4 @@ run:
 	@stack run
 
 clean:
-	@rm -rf .stack-work
+	@rm -rf .stack-work minq.cabal
