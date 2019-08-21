@@ -47,6 +47,7 @@ or_ :: (a -> Bool) -> (a -> Bool) -> (a -> Bool)
 f `or_` g = \x -> f x || g x
 
 -- Describes how to run a MINQ query.
+minq_ :: (b -> c) -> a -> (a -> b) -> c
 minq_ selectFn joinFn whereFn = (selectFn . whereFn) joinFn
 
 -- A wrapper that allows for specifying a query without a where clause.
