@@ -27,9 +27,8 @@ join_
 join_ m1 f1 m2 f2 = do
   a <- m1
   b <- m2
-  let ab = (a, b)
-  guard $ f1 (fst ab) == f2 (snd ab)
-  return ab
+  guard $ f1 a == f2 b
+  return (a, b)
 
 -- Filter rows based on a predicate.
 where_ :: (Monad m, Alternative m) => (a -> Bool) -> m a -> m a
