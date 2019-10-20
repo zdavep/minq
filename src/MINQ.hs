@@ -1,11 +1,11 @@
 module MINQ
-  ( MINQ (..)
-  , runMINQ
-  , select_
-  , join_
-  , where_
-  , and_
-  , or_
+  ( MINQ (..),
+    runMINQ,
+    select_,
+    join_,
+    where_,
+    and_,
+    or_,
   )
 where
 
@@ -17,13 +17,13 @@ select_ :: (Monad m) => (a -> b) -> m a -> m b
 select_ = fmap
 
 -- Combine two rows when they have a value in common.
-join_
-  :: (Monad m, Alternative m, Eq c)
-  => m a
-  -> (a -> c)
-  -> m b
-  -> (b -> c)
-  -> m (a, b)
+join_ ::
+  (Monad m, Alternative m, Eq c) =>
+  m a ->
+  (a -> c) ->
+  m b ->
+  (b -> c) ->
+  m (a, b)
 join_ m1 f1 m2 f2 = do
   a <- m1
   b <- m2
