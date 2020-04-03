@@ -1,6 +1,8 @@
 .PHONY: build format lint test run clean
 
-build: format
+all: format build test
+
+build: 
 	@stack build
 
 format:
