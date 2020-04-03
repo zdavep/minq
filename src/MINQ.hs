@@ -9,8 +9,8 @@ module MINQ
   )
 where
 
-import           Control.Applicative
-import           Control.Monad
+import Control.Applicative
+import Control.Monad
 
 -- Extract fields from a row.
 select_ :: (Monad m) => (a -> b) -> m a -> m b
@@ -39,18 +39,19 @@ where_ fn vals = do
 
 -- Combine two prediciates. The output is true if both predicates return true.
 and_ :: (a -> Bool) -> (a -> Bool) -> (a -> Bool)
-f `and_` g = \x -> f x && g x
+and_ f g x = f x && g x
 
 -- Combine two prediciates. The output is true if either predicate returns true.
 or_ :: (a -> Bool) -> (a -> Bool) -> (a -> Bool)
-f `or_` g = \x -> f x || g x
+or_ f g x = f x || g x
 
 -- Describes how to run a MINQ query.
 minq_ :: (b -> c) -> a -> (a -> b) -> c
 minq_ selectFn joinFn whereFn = (selectFn . whereFn) joinFn
 
 -- A wrapper that allows for specifying a query without a where clause.
-data MINQ m a b = MINQ (m a -> m b) (m a) (m a -> m a)
+data MINQ m a b
+    = MINQ (m a -> m b) (m a) (m a -> m a)
     | MINQ_ (m a -> m b) (m a)
 
 -- Runs MINQ queries.
