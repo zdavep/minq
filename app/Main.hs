@@ -1,34 +1,32 @@
 module Main where
 
-import Data.Foldable (traverse_)
-import MINQ
+import           Data.Foldable (traverse_)
+import           MINQ
 
 -- Defines a row type for top-level movie metadata.
-data Movie
-  = Movie
-      { movieId :: Int,
-        movieGenres :: [String],
-        movieYear :: Int,
-        movieTitle :: String
-      }
-  deriving (Show)
+data Movie = Movie
+    { movieId     :: Int
+    , movieGenres :: [String]
+    , movieYear   :: Int
+    , movieTitle  :: String
+    }
+    deriving (Show)
 
 -- Defines workflow statuses for movie trailers.
-data TrailerStatus
-  = Created
-  | Submitted
-  | Approved
-  deriving (Eq, Show)
+data TrailerStatus = Created
+    | Submitted
+    | Approved
+    deriving (Eq, Show)
 
 -- Defines a row type for movie trailers.
-data Trailer
-  = Trailer
-      { trailerId :: Int,
-        trailerMovieId :: Int, -- FK to Movie
-        trailerURL :: String,
-        trailerStatus :: TrailerStatus
-      }
-  deriving (Show)
+data Trailer = Trailer
+    { trailerId      :: Int
+    -- FK to Movie
+    , trailerMovieId :: Int -- FK to Movie
+    , trailerURL     :: String
+    , trailerStatus  :: TrailerStatus
+    }
+    deriving (Show)
 
 -- Select action (or science fiction) movies.
 actionMovies :: [Movie] -> [Movie]

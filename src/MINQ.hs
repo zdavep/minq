@@ -9,8 +9,8 @@ module MINQ
   )
 where
 
-import Control.Applicative
-import Control.Monad
+import           Control.Applicative
+import           Control.Monad
 
 -- Extract fields from a row.
 select_ :: (Monad m) => (a -> b) -> m a -> m b
@@ -50,16 +50,10 @@ minq_ :: (b -> c) -> a -> (a -> b) -> c
 minq_ selectFn joinFn whereFn = (selectFn . whereFn) joinFn
 
 -- A wrapper that allows for specifying a query without a where clause.
-data MINQ m a b
-  = MINQ
-      (m a -> m b)
-      (m a)
-      (m a -> m a)
-  | MINQ_
-      (m a -> m b)
-      (m a)
+data MINQ m a b = MINQ (m a -> m b) (m a) (m a -> m a)
+    | MINQ_ (m a -> m b) (m a)
 
 -- Runs MINQ queries.
 runMINQ :: (Monad m, Alternative m) => MINQ m a b -> m b
 runMINQ (MINQ s j w) = minq_ s j w
-runMINQ (MINQ_ s j) = minq_ s j (where_ $ const True)
+runMINQ (MINQ_ s j)  = minq_ s j (where_ $ const True)
