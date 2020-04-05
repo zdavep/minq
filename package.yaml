@@ -1,10 +1,10 @@
-name:                minq
-version:             0.1.0.0
-github:              "zdavep/minq"
-author:              "David Pederson"
-maintainer:          "dave.pederson@gmail.com"
-copyright:           "Copyright 2019-present, the original author(s)"
-description:         Please see the README on GitHub at <https://github.com/zdavep/minq#readme>
+name:        minq
+version:     0.1.0.0
+github:      "zdavep/minq"
+author:      "David Pederson"
+maintainer:  "dave.pederson@gmail.com"
+copyright:   "Copyright the original author(s)"
+description: Please see the README on GitHub at <https://github.com/zdavep/minq#readme>
 
 extra-source-files:
 - README.md
