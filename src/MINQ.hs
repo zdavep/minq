@@ -45,8 +45,8 @@ minq_ selectFn joinFn whereFn = (selectFn . whereFn) joinFn
 
 -- A wrapper that allows for specifying a query without a where clause.
 data MINQ m a b
-    = MINQ (m a -> m b) (m a) (m a -> m a)
-    | MINQ_ (m a -> m b) (m a)
+  = MINQ  (m a -> m b) (m a) (m a -> m a)
+  | MINQ_ (m a -> m b) (m a)
 
 -- Runs MINQ queries.
 runMINQ :: (Monad m, Alternative m) => MINQ m a b -> m b

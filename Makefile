@@ -1,4 +1,4 @@
-.PHONY: build format lint test run clean
+.PHONY: build format lint test run clean refactor
 
 all: format build test
 
@@ -12,6 +12,10 @@ format:
 
 lint:
 	@hlint src/*.hs app/*.hs
+
+refactor:
+	@hlint --refactor --refactor-options="-i" src/*.hs
+	@hlint --refactor --refactor-options="-i" app/*.hs
 
 test:
 	@stack test
