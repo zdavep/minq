@@ -19,7 +19,6 @@ data RowB = RowB
   }
   deriving (Eq, Show)
 
-
 -- ID select: just return all rows from a table.
 selectAll :: [RowA] -> [RowA]
 selectAll table =
