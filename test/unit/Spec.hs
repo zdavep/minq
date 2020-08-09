@@ -20,7 +20,7 @@ data RowB = RowB
   deriving (Eq, Show)
 
 -- ID select: just return all rows from a table.
-selectAll :: [RowA] -> [RowA]
+selectAll :: [a] -> [a]
 selectAll table =
   runMINQ $
     MINQ_ (select_ id) table
